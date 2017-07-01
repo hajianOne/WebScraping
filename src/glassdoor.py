@@ -96,7 +96,7 @@ class GlassDoor(object):
             try:
                 item.click()
                 self.clickAtCorner()
-                delay = 0.75 + random.uniform(0.0,0.5)
+                delay = 0.75 + random.uniform(0.0,0.25)
                 print "Delay:", delay
                 time.sleep(delay)
             except:
@@ -104,7 +104,8 @@ class GlassDoor(object):
 
             try:
                 job = self.itemInfo()
-                self.jobs.append(job)
+                if job!=None:
+                    self.jobs.append(job)
             except:
                 print "error in writing itemInfo"             
 
