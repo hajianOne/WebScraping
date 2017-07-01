@@ -103,7 +103,8 @@ class GlassDoor(object):
                 print "Could not click on the item menu"
 
             try:
-                self.jobs.append( self.itemInfo() )
+                job = self.itemInfo()
+                self.jobs.append(job)
             except:
                 print "error in writing itemInfo"             
 
