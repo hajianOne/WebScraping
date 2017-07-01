@@ -39,13 +39,21 @@ class GlassDoor(object):
         self.BasicInfo = "BasicInfo"
 
         self.DescriptionContent = "jobDescriptionContent"
-        self.jobTitle_xpath = "//*[@id='HeroHeaderModule']/div[3]/div[2]/h2"
+
+        self.JobHeader = "empInfo"
+
         self.companyName_xpath = "//*[@id='HeroHeaderModule']/div[3]/div[2]/div/div[1]"
         
         self.jobs = []
         
         try: 
-            self.browser = webdriver.Chrome(executable_path=self.driver_path)
+            # initialize a chrome driver without the images
+            chromeOptions = webdriver.ChromeOptions()
+            prefs = {"profile.managed_default_content_settings.images":2}
+            chromeOptions.add_experimental_option("prefs",prefs)
+            
+            self.browser = webdriver.Chrome(executable_path=self.driver_path,
+                                            chrome_options=chromeOptions)
             try:
                 self.browser.get(self.homeUrl)
             except:
@@ -87,34 +95,64 @@ class GlassDoor(object):
         for item in items:
             try:
                 item.click()
-                
-                delay = 1.0 + random.uniform(0.0,2.0)
+                self.clickAtCorner()
+                delay = 0.75 + random.uniform(0.0,0.5)
                 print "Delay:", delay
                 time.sleep(delay)
-                
-                self.jobs.append( self.itemInfo() )
             except:
                 print "Could not click on the item menu"
+
+            try:
+                self.jobs.append( self.itemInfo() )
+            except:
+                print "error in writing itemInfo"             
 
     def itemInfo(self):
         '''
         take the BasicInfo of the item selected"
         '''
-
+        flag = False
+        
         try:
             Description = self.browser.find_element_by_class_name(self.DescriptionContent)
             Description = Description.get_attribute("innerHTML")
-            
-            JobTitle = self.browser.find_element_by_xpath(self.jobTitle_xpath)
+        except:
+            print "Error in itemInfo.Description"
+            flag = True
+        try:
+            JobTitle = self.browser.find_element_by_class_name(self.JobHeader)
+            JobTitle = JobTitle.find_element_by_class_name("noMargTop")
             JobTitle = JobTitle.get_attribute("innerHTML")
+        except:
+            print "Error in itemInfo.JobTitle"
+            flag = True
+
+        try:
+            CompanyName = self.browser.find_element_by_class_name(self.JobHeader)
             
-            CompanyName = self.browser.find_element_by_xpath(self.companyName_xpath)
+            CompanyName = CompanyName.find_element_by_class_name("empDetailsLink")
             CompanyName = CompanyName.get_attribute("innerHTML")
             
-            BasicInfo = self.browser.find_element_by_id(self.BasicInfo)
-            BasicInfo = BasicInfo.get_attribute("innerHTML")
-            
-            return Job(CompanyName, JobTitle, Description)
+            # BasicInfo = self.browser.find_element_by_id(self.BasicInfo)
+            # BasicInfo = BasicInfo.get_attribute("innerHTML")
         except:
-            print "Could not read"
-        
+            print "Warning in itemJob.CompanyName"
+            CompanyName = None
+
+        if flag==False:
+            return Job(CompanyName, JobTitle, Description)
+            
+    def clickAtCorner(self):
+        '''
+        clicks at the corner of the page to close pop-up dialog box
+        '''
+        try:
+            self.browser.execute_script("el = document.elementFromPoint(1,1); el.click();")
+        except:
+            print "Error in clickAtCorner"
+
+
+    def nextpage(self):
+        Footer = self.browser.find_element_by_id("FooterPageNav")
+        Footer.find_element_by_class_name("next").click()
+        self.clickAtCorner()
