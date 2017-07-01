@@ -20,4 +20,4 @@ for page in range(1,maxPage+1):
 
 
 # raw_input("Press a key")
-# glassdoor.browser.quit()
+glassdoor.browser.quit()
