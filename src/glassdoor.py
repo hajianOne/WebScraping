@@ -3,23 +3,11 @@
 from warnings import warn
 from selenium import webdriver
 
+from WebScraping import Job
+
 import time
 import random
 
-class Job(object):
-
-    def __init__(self, company, job, description, link=""):
-
-        self.company = company
-        self.job = job
-        self.description = description
-        self.link = link
-
-    def info(self):
-        print "Company: ", self.company
-        print "Job Title: ", self.job
-        # print "Description:"
-        # print self.description
         
 class GlassDoor(object):
 
