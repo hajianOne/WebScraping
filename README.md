@@ -17,12 +17,14 @@ some analytics on it.
    perform analytics on the programming skills needed for a data
    science job. The result is saved as a figure in `output`
    folder:
-   ![](output/skills_prog.png)
+
+	![](output/skills_prog.png)
    
    As we can see `python` and `R` are by far the most popular
    scripting languages of data science. The above statistics are
    obtained by the functions defined in `src/DataCleaning.py`.
    
    Here are some more statistics:
-   ![](output/skills_ds.png)
+
+	![](output/skills_ds.png)
    
