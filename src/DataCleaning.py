@@ -81,3 +81,12 @@ def findKeywords(Dict, df, col):
         out[key] = locBool
         
     return out
+
+def Html2Text(df, col):
+    '''
+    converts html code presented in a col into plain text.
+    '''
+
+    get_text = lambda x : BeautifulSoup(x, "lxml").get_text()
+
+    return df[col].apply(get_text)
