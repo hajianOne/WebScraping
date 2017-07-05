@@ -14,6 +14,8 @@ with open("data/data1.json","r") as Input:
     data = json.load(Input)
 
 df = pd.DataFrame(data)
+# converting HTML to TEXT
+df["description"] = DataCleaning.Html2Text(df, "description")
 
 # Programming skills
 fig, ax = plt.subplots(1, figsize=(5,3))
@@ -27,6 +29,7 @@ skills_prog.sort_values(inplace=True, ascending=False)
 skills_prog.plot(kind="bar", subplots=True, rot=-45,
                  label="Programming skills required for data science job (Berlin)")
 ax.set_xticklabels(skills_prog.index, ha="left", size="small")
+
 plt.ylabel("Percentage")
 plt.gcf().subplots_adjust(bottom=0.25)
 
@@ -45,4 +48,4 @@ plt.gcf().subplots_adjust(bottom=0.4)
 savefig("output/skills_ds.png")
 
 
-#plt.show(block=False)
+plt.show(block=False)
