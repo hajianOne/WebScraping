@@ -25,7 +25,7 @@ skills_prog.plot(kind="bar", subplots=True, rot=-45,
                  label="Programming skills required for data science job (Berlin)")
 ax.set_xticklabels(skills_prog.index, ha="left", size="small")
 plt.ylabel("Percentage")
-plt.gcf().subplots_adjust(bottom=0.15)
+plt.gcf().subplots_adjust(bottom=0.25)
 
 savefig("output/skills_prog.png")
 
