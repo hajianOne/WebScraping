@@ -12,3 +12,9 @@ some analytics on it.
   data scientist) in a given city (set to Berlin) and to retrieve
   information about the company, job title and the description. It
   will then save all data in `JSON` format in `data.json`.
+2. run `python -m test/test0` to read the data file `data.json` and
+   perform analytics on the programming skills needed for a data
+   science job. The result is saved as a figure in `output`
+   folder:
+   ![](output/skills_prog.png)
+   
