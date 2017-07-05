@@ -16,20 +16,21 @@ with open("data/data1.json","r") as Input:
 df = pd.DataFrame(data)
 
 # Programming skills
-fig = plt.figure(1)
+fig, ax = plt.subplots(1, figsize=(5,3))
 
 skills_prog = pd.DataFrame(DataCleaning.findKeyword(DataCleaning._skill_prog, df,
                                                     "description")).mean()*100
 skills_prog.sort_values(inplace=True, ascending=False)
-skills_prog.plot(kind="bar", subplots=True, rot=-45, 
-                      label="Programming skills required for data science job (Berlin)")
+skills_prog.plot(kind="bar", subplots=True, rot=-45,
+                 label="Programming skills required for data science job (Berlin)")
+ax.set_xticklabels(skills_prog.index, ha="left", size="small")
 plt.ylabel("Percentage")
 plt.gcf().subplots_adjust(bottom=0.15)
 
 savefig("output/skills_prog.png")
 
 # Data science skills
-plt.figure(2)
+fig, ax = plt.subplots(1, figsize=(5,3))
 skills_ds = pd.DataFrame(DataCleaning.findKeyword(DataCleaning._skill_ds, df,
                                                     "description")).mean()*100
 skills_ds.sort_values(inplace=True, ascending=False)
