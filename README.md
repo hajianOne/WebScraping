@@ -17,6 +17,7 @@ challenging. This is a good exercise for an NLP project.
 * `random`
 * `pandas` (for performing analytics)
 * `bs4.BeautifulSoup` (for parsing the html code)
+* `langdetect.detect` (language detection)
 * `matplotlib`
 * `json`
 
@@ -41,4 +42,4 @@ challenging. This is a good exercise for an NLP project.
    Here are some more statistics:
 
 	![](output/skills_ds.png)
-   
+	![](output/lang.png)
