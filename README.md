@@ -6,6 +6,20 @@ human being while retrieving data from the websites. In this code, we
 choose the example of retrieving job data from Glassdoor and perform
 some analytics on it.
 
+Since each job description is written in a unique way, analyzing the
+text to extract features, such as job requirements, are
+challenging. This is a good exercise for an NLP project.
+
+## packages used
+* `warnings.warn`
+* `selenium.webdriver` (for web scraping)
+* `time`
+* `random`
+* `pandas` (for performing analytics)
+* `bs4.BeautifulSoup` (for parsing the html code)
+* `matplotlib`
+* `json`
+
 ## How to run the code?
 
 1. run `python -m test/test` to search for a particular job (set to be
