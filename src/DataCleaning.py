@@ -1,7 +1,7 @@
 #! /usr/bin/env python2.7
 
 import pandas as pd
-
+from langdetect import detect
 from bs4 import BeautifulSoup
 
 '''
@@ -50,21 +50,6 @@ _skill_ds_dict = { "machine learning": ["ml", "machine learning"],
 }
 
 
-def findKeyword(keys, df, col):
-    '''
-    findKeyword finds keys in the given column of 
-    the data frame and construct a new column with the those found keys.
-    '''
-
-    data = df[col]
-    
-    out = {}
-    for key in keys:
-        locBool = data.str.contains(key, case=False).fillna(False)
-        out[key] = locBool
-        
-    return out
-
 def findKeywords(Dict, df, col):
     '''
     findKeyword finds keys in the given column of 
@@ -90,3 +75,14 @@ def Html2Text(df, col):
     get_text = lambda x : BeautifulSoup(x, "lxml").get_text()
 
     return df[col].apply(get_text)
+
+def detectLang(df, col):
+    '''
+    detect the language of the advertisement
+    '''
+    out = []
+    for label in df.index:
+        out.append(detect(df[col].loc[label]))
+    return out
+                   
+                   

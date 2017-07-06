@@ -16,6 +16,17 @@ with open("data/data1.json","r") as Input:
 df = pd.DataFrame(data)
 # converting HTML to TEXT
 df["description"] = DataCleaning.Html2Text(df, "description")
+df["lang"] = DataCleaning.detectLang(df, "description")
+
+# language of the job
+fig, ax = plt.subplots(1, figsize=(5,3))
+lang = df.groupby("lang").count()["description"]
+lang = lang / sum(lang) * 100
+lang.plot(kind="bar", rot=0, subplots=True,
+          label="Advertisements' languages")
+plt.ylabel("Percentage")
+plt.xlabel("")
+savefig("output/lang.png")
 
 # Programming skills
 fig, ax = plt.subplots(1, figsize=(5,3))
