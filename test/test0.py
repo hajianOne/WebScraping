@@ -19,9 +19,9 @@ df["description"] = DataCleaning.Html2Text(df, "description")
 df["lang"] = DataCleaning.detectLang(df, "description")
 
 # language of the job
-fig, ax = plt.subplots(1, figsize=(5,3))
-lang = df.groupby("lang").count()["description"]
-lang = lang / sum(lang) * 100
+fig, ax = plt.subplots(1, figsize=(5,2))
+lang = df.lang.value_counts()
+lang = lang/sum(lang)
 lang.plot(kind="bar", rot=0, subplots=True,
           label="Advertisements' languages")
 plt.ylabel("Percentage")

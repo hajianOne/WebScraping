@@ -39,6 +39,12 @@ _skill_edu_dict = {"mathematics": ["mathematics"],
                    "computer science": ["computer science"]
 }
 
+# degree
+_skill_deg_dict = { "Ph.D.": ["doctor", "phd", "ph.d."],
+                    "Master": ["master", "msc", "m.sc."],
+                    "Bachelor": ["bachelor", "bsc", "b.sc."]
+}
+
 # data science skills
 
 _skill_ds_dict = { "machine learning": ["ml", "machine learning"],
@@ -84,5 +90,3 @@ def detectLang(df, col):
     for label in df.index:
         out.append(detect(df[col].loc[label]))
     return out
-                   
-                   
