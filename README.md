@@ -11,7 +11,6 @@ text to extract features, such as job requirements, are
 challenging. This is a good exercise for an NLP project.
 
 ## packages used
-* `warnings.warn`
 * `selenium.webdriver` (for web scraping)
 * `time`
 * `random`
@@ -20,6 +19,7 @@ challenging. This is a good exercise for an NLP project.
 * `langdetect.detect` (language detection)
 * `matplotlib`
 * `json`
+* `warnings.warn`
 
 ## How to run the code?
 

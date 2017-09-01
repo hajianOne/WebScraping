@@ -29,6 +29,7 @@ class GlassDoor(object):
         self.DescriptionContent = "jobDescriptionContent"
 
         self.JobHeader = "empInfo"
+        self.JobSuperHeader = "HeroHeaderModule"
 
         self.companyName_xpath = "//*[@id='HeroHeaderModule']/div[3]/div[2]/div/div[1]"
         
@@ -84,7 +85,7 @@ class GlassDoor(object):
             try:
                 item.click()
                 self.clickAtCorner()
-                delay = 0.75 + random.uniform(0.0,0.25)
+                delay = 0.5 + random.uniform(0.0,0.25)
                 print "Delay:", delay
                 time.sleep(delay)
             except:
@@ -118,7 +119,7 @@ class GlassDoor(object):
             flag = True
 
         try:
-            CompanyName = self.browser.find_element_by_class_name(self.JobHeader)
+            CompanyName = self.browser.find_element_by_id(self.JobSuperHeader)
             
             CompanyName = CompanyName.find_element_by_class_name("empDetailsLink")
             CompanyName = CompanyName.get_attribute("innerHTML")
@@ -128,7 +129,6 @@ class GlassDoor(object):
         except:
             print "Warning in itemJob.CompanyName"
             CompanyName = None
-
         if flag==False:
             return Job(CompanyName, JobTitle, Description)
             

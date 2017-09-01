@@ -2,7 +2,6 @@
 
 from src.glassdoor import GlassDoor
 
-import time
 import json
 
 Job = "Data Scientist"
@@ -20,7 +19,7 @@ for page in range(1,maxPage+1):
 
 # writing the data as JSON file
 jobs = [job.__dict__ for job in glassdoor.jobs]
-with open("data.json", "w") as output:
+with open("data/data-DS-Aug31.json", "w") as output:
     json.dump(jobs, output)
 
 glassdoor.browser.quit()

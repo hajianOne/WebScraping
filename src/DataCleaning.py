@@ -26,11 +26,16 @@ _skill_prog_dict = {"R-software": ["R,", " R "],
                     "MongoDB": ["mongodb"],
                     "Spark": ["spark"],
                     "Tableau": ["tableau"],
-                    "Sql": ["sql"],
-                    "PHP": ["php"],
+#                    "Sql": ["sql"],
+#                    "PHP": ["php"],
+                    "PowerBI": ["power bi", "powerbi"],
                     "Azure": ["azure"],
                     "PostgreSql": ["postgresql"],
-                    "JSON": ["json"]
+                    "JSON": ["json"],
+                    "Bokeh": ["bokeh"],
+                    "Shiny R-studio": ["shiny"],
+                    "Dash": ["dash"],
+                    "ElasticSearch": ["elastic"]
 }
 
 # educational background
